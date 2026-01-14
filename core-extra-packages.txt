@@ -38,6 +38,15 @@ obsidian
 
 # DOCUMENT VIEWERS
 zathura
+zathura-pdf-mupdf
+
+# LATEX
+texlive-core
+texlive-latexextra
+texlive-science
+texlive-fontsextra
+texlive-pictures
+texlive-lang
 
 # WAYLAND SUPPORT
 qt5-wayland
