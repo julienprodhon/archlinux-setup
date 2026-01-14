@@ -1,0 +1,37 @@
+# DEVELOPMENT TOOLS
+base-devel
+git
+curl
+wget
+npm
+
+# EDITORS & IDEs
+neovim
+
+# SHELL & TERMINAL
+zsh
+tmux
+
+# SYSTEM UTILITIES
+man-db
+man-pages
+ripgrep
+bat
+fzf
+yazi
+tldr
+
+# MULTIMEDIA
+ffmpeg
+vlc
+
+# PRODUCTIVITY & COMMUNICATION
+signal-desktop
+telegram-desktop
+obsidian
+
+# DOCUMENT VIEWERS
+zathura
+
+# WAYLAND SUPPORT
+qt5-wayland

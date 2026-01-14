@@ -1,0 +1,28 @@
+# WEB BROWSERS
+zen-browser-bin
+
+# SECURITY & VPN
+protonvpn
+proton-pass-bin
+
+# IMAGE VIEWERS
+qview
+
+# DB
+rainfrog 
+# or sqlit
+
+# Football results
+golazo
+
+# Manager
+btop
+ncdu
+
+# Git
+lazygit
+# or gitui
+
+# Docker
+lazydocker
+
