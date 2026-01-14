@@ -40,9 +40,5 @@ for dotfile in .bashrc .zshrc .profile; do
 done
 
 echo ""
-echo "Updating .zshrc with plugin configuration..."
-sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
-
-echo ""
 echo "✓ Dotfiles synced successfully!"
 echo "Dotfiles cloned to: $DOTFILES_DIR"

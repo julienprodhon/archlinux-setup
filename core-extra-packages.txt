@@ -11,6 +11,12 @@ neovim
 # SHELL & TERMINAL
 zsh
 tmux
+starship
+eza
+fd
+zoxide
+zsh-autosuggestions
+zsh-syntax-highlighting
 
 # SYSTEM UTILITIES
 man-db
