@@ -4,6 +4,8 @@ git
 curl
 wget
 npm
+clang
+cmake
 
 # EDITORS & IDEs
 neovim
@@ -26,6 +28,7 @@ bat
 fzf
 yazi
 tldr
+upower
 
 # MULTIMEDIA
 ffmpeg

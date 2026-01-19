@@ -16,12 +16,14 @@ rainfrog
 golazo
 
 # Manager
-btop
 ncdu
 
 # Git
 lazygit
 # or gitui
+
+# Julia
+juliaup
 
 # Docker
 lazydocker

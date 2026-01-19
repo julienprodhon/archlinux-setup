@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-DOTFILES_REPO="https://github.com/yourusername/dotfiles.git"
+DOTFILES_REPO="https://github.com/julienprodhon/dotfiles.git"
 DOTFILES_DIR="${HOME}/dotfiles"
 CONFIG_DIR="${HOME}/.config"
 
@@ -19,8 +19,25 @@ fi
 
 echo ""
 echo "Syncing config directories..."
+
+# Files to preserve during sync (machine-specific configs)
+PRESERVE_FILES=(
+  "niri/dms/outputs.kdl"
+)
+
 if [[ -d "$DOTFILES_DIR/config" ]]; then
   mkdir -p "$CONFIG_DIR"
+
+  # Backup preserved files
+  BACKUP_DIR=$(mktemp -d)
+  for preserve in "${PRESERVE_FILES[@]}"; do
+    if [[ -f "$CONFIG_DIR/$preserve" ]]; then
+      mkdir -p "$BACKUP_DIR/$(dirname "$preserve")"
+      cp "$CONFIG_DIR/$preserve" "$BACKUP_DIR/$preserve"
+      echo "Preserving $preserve..."
+    fi
+  done
+
   for dir in "$DOTFILES_DIR/config"/*; do
     [[ -d "$dir" ]] || continue
     dir_name=$(basename "$dir")
@@ -28,6 +45,16 @@ if [[ -d "$DOTFILES_DIR/config" ]]; then
     rm -rf "$CONFIG_DIR/$dir_name"
     cp -r "$dir" "$CONFIG_DIR/"
   done
+
+  # Restore preserved files
+  for preserve in "${PRESERVE_FILES[@]}"; do
+    if [[ -f "$BACKUP_DIR/$preserve" ]]; then
+      mkdir -p "$CONFIG_DIR/$(dirname "$preserve")"
+      cp "$BACKUP_DIR/$preserve" "$CONFIG_DIR/$preserve"
+      echo "Restored $preserve"
+    fi
+  done
+  rm -rf "$BACKUP_DIR"
 fi
 
 echo ""
