@@ -29,3 +29,4 @@ Scripts for setting up Arch Linux after a fresh install.
 - `generate-config.sh` - Generates archinstall JSON config
 - `post-install.sh` - Post-installation setup script
 - `sync-dotfiles.sh` - Syncs dotfiles from a git repository
+- `color-management.md` - DMS color system and theming setup
