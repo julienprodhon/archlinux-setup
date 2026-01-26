@@ -1,3 +1,5 @@
+linux-firmware
+
 # DEVELOPMENT TOOLS
 base-devel
 git
