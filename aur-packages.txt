@@ -28,3 +28,6 @@ juliaup
 # Docker
 lazydocker
 
+# Backup
+timeshift-autosnap
+

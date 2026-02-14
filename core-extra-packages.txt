@@ -8,6 +8,8 @@ wget
 npm
 clang
 cmake
+mise
+prek
 
 # EDITORS & IDEs
 neovim
@@ -33,6 +35,8 @@ yazi
 tldr
 upower
 rsync
+timeshift
+pacman-contrib
 
 # MULTIMEDIA
 ffmpeg
