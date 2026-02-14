@@ -8,7 +8,7 @@ Wallpaper → Matugen → Material Design 3 Colors → Dank16 → 16-color palet
         GTK/Qt/Apps                           Terminals
 ```
 
-1. **Matugen** extracts colors from wallpaper using Material Design 3
+1. **Matugen** extracts colors from wallpaper using Material Design 3 (k-means clustering)
 2. **Dank16** generates 16-color ANSI palette with dark/light/default variants
 3. **Templates** write config files for detected apps
 4. **Signal handling** reloads running apps (Ghostty: `SIGUSR2`, Kitty: `SIGUSR1`)
@@ -40,7 +40,7 @@ DMS detects these apps and generates themed config files automatically:
 | **Niri** | `~/.config/niri/dms/colors.kdl` | Already integrated |
 | **GTK 3/4** | `~/.config/gtk-3.0/dank-colors.css` | Theme cycle |
 | **Qt5/Qt6** | Via qt5ct/qt6ct | Settings update |
-| **Zen Browser** | Firefox CSS theming | Browser reload |
+| **Zen Browser** | Firefox CSS theming (UI only — toolbar, tabs, menus; not website content) | Needs manual userChrome.css templating |
 | **dgop** | Has template support | Auto |
 | **Neovim** | Template available | Manual reload |
 
@@ -49,7 +49,7 @@ DMS detects these apps and generates themed config files automatically:
 | App | Current State | Action Required |
 |-----|---------------|-----------------|
 | **Ghostty config** | Static `config-dankcolors` | Change to `theme = dankcolors` and remove static color file |
-| **Tmux** | Static colors in config | Keep static OR create custom matugen template |
+| **Tmux** | Static colors in config | Keep static OR create custom matugen template. Note: existing sessions don't pick up color changes — only new sessions/windows do. |
 | **Neovim colorscheme** | Catppuccin (static) | Keep static OR switch to dynamic theme |
 
 ### Not Themed (No DMS Support)
@@ -93,6 +93,14 @@ output_path = '~/.config/myapp/colors.conf'
 Template variables available:
 - `{{dank16.color0.default.hex}}` through `{{dank16.color15.default.hex}}`
 - `{{colors.primary.dark.hex}}`, `{{colors.background.default.hex}}`, etc.
+
+---
+
+## Static Color Schemes
+
+If using a static theme instead of dynamic wallpaper-based colors, the most popular choices are: Gruvbox, Catppuccin, Nord, Dracula, and Tokyo Night.
+
+Browse available themes at: https://github.com/topics/color-scheme and https://www.terminal.sexy
 
 ---
 

@@ -31,6 +31,7 @@ man-pages
 ripgrep
 bat
 fzf
+git-delta
 yazi
 tldr
 upower
