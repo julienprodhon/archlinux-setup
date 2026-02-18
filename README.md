@@ -14,13 +14,13 @@ Scripts for setting up Arch Linux after a fresh install.
    ```bash
    ./post-install.sh
    ```
-   Installs yay, Oh My Zsh (with plugins), DMS, and AUR packages.
+   Installs yay, Zsh (with plugins), DMS, and AUR packages.
 
 3. Sync your dotfiles:
    ```bash
    ./sync-dotfiles.sh
    ```
-   Edit `DOTFILES_REPO` in the script to point to your dotfiles repository.
+   Edit `DOTFILES_URL` in the script to point to your dotfiles repository.
 
 ## Pacman Configuration
 
@@ -50,4 +50,3 @@ Timeshift is configured automatically by `post-install.sh` in RSYNC mode with no
 - `generate-config.sh` - Generates archinstall JSON config
 - `post-install.sh` - Post-installation setup script
 - `sync-dotfiles.sh` - Syncs dotfiles from a git repository
-- `color-management.md` - DMS color system and theming setup

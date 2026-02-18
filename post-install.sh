@@ -15,11 +15,10 @@ echo ""
 echo "Installing yay..."
 if ! command -v yay &>/dev/null; then
   TEMP=$(mktemp -d)
-  cd "$TEMP"
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
-  makepkg -si --noconfirm
-  cd ~
+  trap "rm -rf '$TEMP'" EXIT
+  git clone https://aur.archlinux.org/yay.git "$TEMP/yay"
+  (cd "$TEMP/yay" && makepkg -si --noconfirm)
+  trap - EXIT
   rm -rf "$TEMP"
 fi
 
@@ -28,14 +27,16 @@ echo ""
 # Install Zsh with Starship prompt
 echo "Installing Zsh and Starship..."
 sudo pacman -S --needed --noconfirm zsh starship zsh-autosuggestions zsh-syntax-highlighting
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 echo ""
 
 # Install DMS
 echo "Installing DMS..."
-curl -fsSL https://install.danklinux.com -o /tmp/dms-install.sh
-sh /tmp/dms-install.sh
+if ! command -v dms &>/dev/null; then
+  curl -fsSL https://install.danklinux.com -o /tmp/dms-install.sh
+  sh /tmp/dms-install.sh
+fi
 
 yay -S --needed --noconfirm greetd-dms-greeter-git
 dms greeter enable
@@ -47,17 +48,17 @@ echo ""
 echo "Installing AUR packages..."
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACKAGES=$(cat "$SCRIPT_DIR/aur-packages.txt" | grep -v '^#' | grep -v '^$' | tr '\n' ' ')
-yay -S --needed --noconfirm $PACKAGES
+yay -S --needed --noconfirm "$PACKAGES"
 
 # Configure pacman (EndeavourOS-style defaults)
 echo "Configuring pacman..."
 sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists$/VerbosePkgLists/' /etc/pacman.conf
-sudo sed -i '/^Color$/a ILoveCandy' /etc/pacman.conf
+grep -q 'ILoveCandy' /etc/pacman.conf || sudo sed -i '/^Color$/a ILoveCandy' /etc/pacman.conf
 
 echo ""
 
-# Configure Timeshift (RSYNC mode, keep 5 snapshots)
+# Configure Timeshift (RSYNC mode, no scheduled snapshots)
 echo "Configuring Timeshift..."
 sudo mkdir -p /etc/timeshift
 sudo tee /etc/timeshift/timeshift.json > /dev/null <<'TIMESHIFT'

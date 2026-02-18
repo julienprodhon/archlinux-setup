@@ -24,6 +24,7 @@ zoxide
 zsh-autosuggestions
 zsh-syntax-highlighting
 zsh-completions
+zsh-autocomplete
 
 # SYSTEM UTILITIES
 man-db
@@ -60,5 +61,12 @@ texlive-fontsextra
 texlive-pictures
 texlive-lang
 
+# COMPOSITOR & DISPLAY
+niri
+ghostty
+pipewire
+wireplumber
+
 # WAYLAND SUPPORT
 qt5-wayland
+qt6-wayland

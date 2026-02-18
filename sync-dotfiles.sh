@@ -3,7 +3,7 @@ set -e
 
 DOTFILES_URL="https://github.com/julienprodhon/dotfiles/archive/main.tar.gz"
 CONFIG_DIR="${HOME}/.config"
-PRESERVE_DIRS=("niri/dms")
+PRESERVE_DIRS=("dms")
 EXTRACT_DIR=$(mktemp -d)
 
 trap "rm -rf $EXTRACT_DIR" EXIT
@@ -25,6 +25,6 @@ echo "Syncing config directories..."
 
 # Sync home dotfiles
 echo "Syncing home dotfiles..."
-rsync -a "$EXTRACT_DIR"/.{bashrc,zshrc,profile} ~/ 2>/dev/null || true
+rsync -a "$EXTRACT_DIR/.zshrc" ~/ 2>/dev/null || true
 
 echo "Done!"
