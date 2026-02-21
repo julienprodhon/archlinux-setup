@@ -53,13 +53,8 @@ obsidian
 zathura
 zathura-pdf-mupdf
 
-# LATEX
-texlive-core
-texlive-latexextra
-texlive-science
-texlive-fontsextra
-texlive-pictures
-texlive-lang
+# TYPST
+typst
 
 # COMPOSITOR & DISPLAY
 niri
